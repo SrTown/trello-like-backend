@@ -24,10 +24,6 @@ export const validateCookie = (
             process.env.TOKEN_KEYWORD || "tokentest",
         ) as IPayload;
         req.id_user = payload.id;
-        req.type_user = payload.typeUser;
-        req.userLanguage = payload.userLanguage;
-        req.code_cua_user = payload.code_cua_user;
-        req.code_cua_master = payload.code_cua_master;
     } catch (error) {
         //return res.status(403).json({ message: 'Acceso denegato. No jwt.' });
     }
@@ -87,10 +83,6 @@ export const validateRoutePrivate = async (
         if (typeof token === "string") {
             const decrypt = jwt.verify(token, process.env.TOKEN_KEYWORD || "tokentest") as IPayload;
             req.id_user = decrypt?.id;
-            req.type_user = decrypt.typeUser;
-            req.userLanguage = decrypt.userLanguage;
-            req.code_cua_user = decrypt.code_cua_user;
-            req.code_cua_master = decrypt.code_cua_master;
         } else {
             return res.status(401).json({
                 ok: false,
@@ -152,7 +144,6 @@ export const validateCuaMaster = (
             });
         }
         req.id_user = payload.id;
-        req.type_user = payload.typeUser;
         next();
     } catch (error) {
         return res.status(401).json("Error, token expired.");
