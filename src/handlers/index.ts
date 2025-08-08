@@ -4,5 +4,3 @@ export * from './encryptors.handler';
 export * from './api.handler';
 export * from './crd.handler';
 export * from './apipub.handler';
-export * from './general.handler';
-export * from './pushnotification.handler';
