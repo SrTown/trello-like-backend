@@ -17,8 +17,8 @@ export const validateForgotPassword = [
 ];
 
 export const validateUpdatePassword = [
-  body('password').notEmpty().withMessage('The password is mandatory.'),
-  body('password').isLength({ min: 6 }).withMessage('The password must contain at least 6 characters.'),
+  body('password_hash').notEmpty().withMessage('The password is mandatory.'),
+  body('password_hash').isLength({ min: 6 }).withMessage('The password must contain at least 6 characters.'),
   body('newPassword').isLength({ min: 6 }).withMessage('The new password must contain at least 6 characters.')
 ];
 
@@ -26,8 +26,8 @@ export const createUserValidator = [
   body('name').notEmpty().withMessage('The name is mandatory.'),
   body('email').notEmpty().withMessage('The email is mandatory.'),
   body('email').isEmail().withMessage('Email must be an email.'),
-  body('password').notEmpty().withMessage('The passowrd is mandatory.'),
-  body('password').isLength({ min: 6 }).withMessage('Password must contain at least 6 characters.')
+  body('password_hash').notEmpty().withMessage('The passowrd is mandatory.'),
+  body('password_hash').isLength({ min: 6 }).withMessage('Password must contain at least 6 characters.')
 ];
 
 

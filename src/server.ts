@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import cookieParser from "cookie-parser";
-//import { routerApi, routerApipub, routerAuthentication, routerCrd, routerUsers } from "./routers";
+import { routerApi, routerApipub, routerAuthentication, routerCrd, routerUsers } from "./routers";
 import db from "./config/db";
 import cors from 'cors';
 import { getBearerToken, validateCookie, validateRoutePrivate } from "./middlewares";
@@ -30,10 +30,10 @@ server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser());
 server.use(validateCookie);
 
-// server.use("/user", validateRoutePrivate, getBearerToken, routerUsers);
-// server.use("/auth", routerAuthentication);
-// server.use("/api", validateRoutePrivate, getBearerToken, routerApi);
-// server.use("/apipub", routerApipub);
-// server.use("/crd", validateRoutePrivate, getBearerToken, routerCrd);
+server.use("/user", validateRoutePrivate, getBearerToken, routerUsers);
+server.use("/auth", routerAuthentication);
+server.use("/api", validateRoutePrivate, getBearerToken, routerApi);
+server.use("/apipub", routerApipub);
+server.use("/crd", validateRoutePrivate, getBearerToken, routerCrd);
 
 export default server;

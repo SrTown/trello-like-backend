@@ -130,7 +130,7 @@ export const validateRoutePublic = async (req: Request, res: Response) => {
         return res.status(403).json({
             of: false,
             message: "No need to sign in.",
-        }); //redireccionar a pagina principal de profile/post logueo; PENDIENTE FRONT
+        });
     }
     //res.redirect('/postlogueo');
     return res.json({ message: "Sign in." });
